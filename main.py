@@ -7,7 +7,7 @@ from threading import Thread
 
 import os
 
-TOKEN = config["TOKEN"]
+TOKEN = os.environ["TOKEN"]
 GUILD_ID = 1364561849399378021  # テスト時のみ使用
 
 intents = discord.Intents.default()
