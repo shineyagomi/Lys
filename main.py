@@ -49,8 +49,7 @@ class StartVerificationView(discord.ui.View):
 
     @discord.ui.button(label="✅ 認証スタート", style=discord.ButtonStyle.success)
     async def start_verification(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.user.send("こんにちは！本人認証を開始します。
-売り手 or 買い手の情報を入力してください。")
+        await interaction.user.send("こんにちは！本人認証を開始します。\n売り手 or 買い手の情報を入力してください。")
         # ここでDMに選択ボタン or Modal を送る（今後追加）
 
 @bot.event
