@@ -1,17 +1,14 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
-import os
 import json
 from flask import Flask
 from threading import Thread
 
-TOKEN = os.getenv("TOKEN")
-if not TOKEN:
-    with open("config.json", "r") as f:
-        config = json.load(f)
-    TOKEN = config["TOKEN"]
+with open("config.json", "r") as f:
+    config = json.load(f)
 
+TOKEN = config["TOKEN"]
 GUILD_ID = 1364561849399378021  # テスト時のみ使用
 
 intents = discord.Intents.default()
@@ -36,7 +33,7 @@ async def setup_panel(interaction: discord.Interaction):
 
     embed = discord.Embed(
         title="取引認証スタート",
-        description="このBotで取引を始めるには、まず本人認証が必要です。\n下のボタンをタップして認証を開始してください。"
+        description="このBotで取引を始めるには、まず本人認証が必要です。\n下のボタンをタップして認証を開始してください。",
         color=discord.Color.green()
     )
     view = StartVerificationView()
@@ -50,12 +47,11 @@ class StartVerificationView(discord.ui.View):
     @discord.ui.button(label="✅ 認証スタート", style=discord.ButtonStyle.success)
     async def start_verification(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.user.send("こんにちは！本人認証を開始します。\n売り手 or 買い手の情報を入力してください。")
-        # ここでDMに選択ボタン or Modal を送る（今後追加）
 
 @bot.event
 async def on_ready():
     await tree.sync(guild=discord.Object(id=GUILD_ID))
-    print(f"Bot起動：{bot.user.name}")
+    print(f"Bot起動: {bot.user.name}")
 
 app = Flask('')
 
