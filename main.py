@@ -36,8 +36,7 @@ async def setup_panel(interaction: discord.Interaction):
 
     embed = discord.Embed(
         title="取引認証スタート",
-        description="このBotで取引を始めるには、まず本人認証が必要です。"
-下のボタンをタップして認証を開始してください。",
+        description="このBotで取引を始めるには、まず本人認証が必要です。\n下のボタンをタップして認証を開始してください。"
         color=discord.Color.green()
     )
     view = StartVerificationView()
