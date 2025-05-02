@@ -5,8 +5,7 @@ import json
 from flask import Flask
 from threading import Thread
 
-with open("config.json", "r") as f:
-    config = json.load(f)
+import os
 
 TOKEN = config["TOKEN"]
 GUILD_ID = 1364561849399378021  # テスト時のみ使用
